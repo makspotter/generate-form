@@ -2,8 +2,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   forwardRef,
   HostBinding,
+  HostListener,
   inject,
   input,
   signal,
@@ -38,8 +40,17 @@ export class SelectComponent implements ControlValueAccessor {
   value: string;
   selectedItem: SelectItemModel | null = null;
 
+  private elementRef = inject(ElementRef);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
   private readonly disabled = signal(this.isDisabled());
+
+  @HostListener('document:keydown.escape', ['$event'])
+  @HostListener('document:click', ['$event'])
+  onClose(event: Event): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.isOpened.set(false);
+    }
+  }
 
   @HostBinding('class.disabled')
   get _isDisabled(): boolean {

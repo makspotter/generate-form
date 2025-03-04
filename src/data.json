@@ -14,7 +14,7 @@
     "placeholder": "",
     "model": "selectRole",
     "value": "id0",
-    "disabled": true,
+    "disabled": false,
     "required": true,
     "selectData": [
       { "id": "id0", "label": "Role 0" },

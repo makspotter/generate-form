@@ -26,6 +26,7 @@
 @if (isOpened()) {
   <div
     class="list g-flex-column gap-4 g-scroll-y"
+    [class.list--on-top]="isOpened()"
     [style.max-height.px]="showedItems() * itemHeight() + (showedItems() - 1) * 4">
     @for (item of items(); track item) {
       <div

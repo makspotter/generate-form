@@ -36,6 +36,10 @@
   border-radius: 6px;
   background: color('white');
 
+  &--on-top {
+    z-index: 9999;
+  }
+
   &__item {
     padding: ($grid-offset-step * 1.5) ($grid-offset-step * 2.5);
 
