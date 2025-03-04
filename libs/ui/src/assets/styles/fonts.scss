@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+.title-font {
+  font-family: $font-name-title;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-wrap {
+  white-space: break-spaces;
+}
+
+// [Font size]
+@for $i from 10 through 100 {
+  .font-size-#{$i} {
+    font-size: #{$i}px;
+  }
+}

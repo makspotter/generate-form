@@ -1,0 +1,15 @@
+@use 'grid' as *;
+@use 'variables' as *;
+@use 'colors' as *;
+
+.hidden {
+  opacity: 0;
+}
+
+.none-selectable {
+  user-select: none;
+}
+
+.none-pointer {
+  pointer-events: none;
+}

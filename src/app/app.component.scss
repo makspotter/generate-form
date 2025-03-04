@@ -1,0 +1,19 @@
+@use 'grid' as *;
+@use 'variables' as *;
+
+:host {
+  height: 100%;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+
+  router-outlet {
+    display: none;
+  }
+
+  ::ng-deep > * {
+    @extend .g-flex-column__item;
+  }
+}

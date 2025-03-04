@@ -1,0 +1,10 @@
+@use 'variables' as *;
+
+.content {
+  padding: ($grid-offset-step * 4) ($grid-offset-step * 6);
+}
+
+.btn-submit {
+  width: 300px;
+  margin-bottom: $grid-offset-step * 4;
+}

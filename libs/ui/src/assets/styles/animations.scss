@@ -1,0 +1,13 @@
+@keyframes rotate-keyframes {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-animation {
+  animation: rotate-keyframes 1.5s linear infinite;
+  transform-origin: center;
+}

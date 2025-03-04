@@ -1,0 +1,50 @@
+@if (loading()) {
+  <div>Loading...</div>
+} @else {
+  <form
+    class="g-flex-column__item g-flex-column gap-30"
+    [formGroup]="formGroup"
+    autocomplete="off">
+    <div class="content g-flex-column__item g-flex-column gap-30 g-scroll-y">
+      @for (item of data(); track item) {
+        <div class="g-flex g-flex--align-center gap-10">
+          @if (item.type !== CONTROL_TYPE.CHECKBOX && item.label) {
+            <iq-label
+              [label]="item.label"
+              [required]="item.required" />
+          }
+
+          @switch (item.type) {
+            @case (CONTROL_TYPE.CHECKBOX) {
+              <iq-checkbox
+                [formControlName]="item.model"
+                [title]="item.label"
+                [required]="item.required" />
+            }
+            @case (CONTROL_TYPE.INPUT) {
+              <input
+                iq-input
+                autocomplete="new-password"
+                [placeholder]="item.placeholder"
+                [isFocused]="true"
+                [type]="item.inputType ? item.inputType : 'text'"
+                [formControlName]="item.model" />
+            }
+            @case (CONTROL_TYPE.SELECT) {
+              <iq-select
+                class="width-200"
+                [formControlName]="item.model"
+                [items]="item.selectData" />
+            }
+          }
+        </div>
+      }
+    </div>
+
+    <iq-button
+      class="btn-submit g-flex-column__item-fixed g-flex--align-self-center"
+      label="Отправить"
+      [isDisabled]="formGroup.invalid"
+      (click)="onSubmitForm()" />
+  </form>
+}

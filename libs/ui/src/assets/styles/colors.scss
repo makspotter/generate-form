@@ -1,0 +1,29 @@
+@use "sass:map";
+
+$colors: (
+  'white': #ffffff,
+  'yellow': #fee471,
+  'yellow-line': #c6ae4c,
+  'yellow-hover': #ffe987,
+  'yellow-disabled': #fee471,
+  'grey': #f2f2f2,
+  'grey-line': #c1c1c1,
+  'red': #f25a38,
+  'font-default': #2f2f2f,
+  'font-hover': #666149,
+  'font-disabled': #8f8251,
+  'font-placeholder': #878787,
+);
+
+@function color($color-name) {
+  $color: map.get($colors, $color-name);
+
+  @return $color;
+}
+
+// [Colors]
+@each $color, $value in $colors {
+  .color-#{$color} {
+    color: $value;
+  }
+}

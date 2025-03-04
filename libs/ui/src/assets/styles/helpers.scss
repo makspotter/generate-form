@@ -1,0 +1,144 @@
+// [Line height]
+@for $i from 100 through 200 {
+  .line-height-#{$i} {
+    line-height: #{$i}#{"%"};
+  }
+}
+
+// [Gaps]
+@for $i from 1 through 50 {
+  .gap-#{$i * 2} {
+    gap: #{$i * 2}px;
+  }
+}
+
+// [Icon sizes]
+@for $i from 4 through 15 {
+  .icon__#{$i * 2 + 2} {
+    font-size: #{$i * 2 + 2}px;
+  }
+}
+
+// [Width]
+@for $i from 1 through 1000 {
+  .width-#{$i} {
+    width: #{$i}px;
+  }
+}
+
+// [Height]
+@for $i from 1 through 1000 {
+  .height-#{$i} {
+    height: #{$i}px;
+  }
+}
+
+// [Max Width]
+@for $i from 1 through 1000 {
+  .max-width-#{$i} {
+    max-width: #{$i}px;
+  }
+}
+
+// [Min Width]
+@for $i from 1 through 1000 {
+  .min-width-#{$i} {
+    min-width: #{$i}px;
+  }
+}
+
+// [Margin, Padding]
+@for $i from 1 through 120 {
+  .margin-#{$i} {
+    margin: #{$i}px;
+  }
+
+  .margin-left-right-#{$i} {
+    margin: 0 #{$i}px;
+  }
+
+  .margin-top-bottom-#{$i} {
+    margin: #{$i}px 0;
+  }
+
+  .margin-top-#{$i} {
+    margin-top: #{$i}px;
+  }
+
+  .margin-bottom-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+
+  .margin-left-#{$i} {
+    margin-left: #{$i}px;
+  }
+
+  .margin-right-#{$i} {
+    margin-right: #{$i}px;
+  }
+
+  .padding-#{$i} {
+    padding: #{$i}px;
+  }
+
+  .padding-left-right-#{$i} {
+    padding: 0 #{$i}px;
+  }
+
+  .padding-top-bottom-#{$i} {
+    padding: #{$i}px 0;
+  }
+
+  .padding-top-#{$i} {
+    padding-top: #{$i}px;
+  }
+
+  .padding-bottom-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+
+  .padding-left-#{$i} {
+    padding-left: #{$i}px;
+  }
+
+  .padding-right-#{$i} {
+    padding-right: #{$i}px;
+  }
+}
+
+.width-100-percent {
+  width: 100%;
+}
+
+.width-50-percent {
+  width: 50%;
+}
+
+.page-loader {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.width-fit-content {
+  width: fit-content;
+}
+
+.height-fit-content {
+  height: fit-content;
+}
+
+.pointer {
+  user-select: none;
+  cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: inherit;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: none;
+}

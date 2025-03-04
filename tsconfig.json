@@ -13,10 +13,34 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "paths": {
+      "@iq-ui/components": [
+        "./libs/ui/src/lib/components/index.ts"
+      ],
+      "@iq-app/interfaces": [
+        "./src/app/interfaces/index.ts"
+      ],
+      "@iq-app/models": [
+        "./src/app/models/index.ts"
+      ],
+      "@iq-app/constants": [
+        "./src/app/constants/index.ts"
+      ],
+      "@iq-app/api-services": [
+        "./src/app/api-services/index.ts"
+      ],
+      "@iq-app/resolvers": [
+        "./src/app/resolvers/index.ts"
+      ],
+      "@iq-app/services": [
+        "./src/app/services/index.ts"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

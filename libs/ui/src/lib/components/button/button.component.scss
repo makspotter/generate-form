@@ -1,0 +1,24 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
+:host {
+  padding: ($grid-offset-step * 4) ($grid-offset-step * 6);
+  background: color('yellow');
+  border-radius: 6px;
+  border-bottom: 1px solid color('yellow-line');
+  color: color('font-default');
+  user-select: none;
+  cursor: pointer;
+
+  &:hover:not(:disabled):not(.disabled) {
+    color: color('font-hover');
+    background: color('yellow-hover');
+  }
+
+  &.disabled,
+  &:disabled {
+    color: color('font-disabled');
+    background: color('yellow-disabled');
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
+:host {
+  position: relative;
+  font-family: $font-name-default;
+  font-size: $font-size-default;
+
+  &.disabled,
+  &:disabled {
+    .selected {
+      cursor: not-allowed;
+      background: rgba(color('grey'), 0.75);
+      color: color('font-disabled');
+    }
+  }
+}
+
+.selected {
+  min-height: 43px;
+  padding: $grid-offset-step * 2.5;
+  border: 1px solid color('grey-line');
+  border-radius: 6px;
+  background: color('white');
+
+  &--opened {
+    background: color('grey');
+  }
+}
+
+.list {
+  position: absolute;
+  width: inherit;
+  margin-top: $grid-offset-step;
+  border: 1px solid color('grey-line');
+  border-radius: 6px;
+  background: color('white');
+
+  &__item {
+    padding: ($grid-offset-step * 1.5) ($grid-offset-step * 2.5);
+
+    &:hover {
+      background: color('yellow-hover');
+    }
+  }
+}

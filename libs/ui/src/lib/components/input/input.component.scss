@@ -1,0 +1,18 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
+:host {
+  font-family: $font-name-default;
+  font-size: $font-size-default;
+  padding: $grid-offset-step * 2.5;
+  border: 1px solid color('grey-line');
+  border-radius: 6px;
+
+  &::placeholder {
+    color: color('font-placeholder');
+  }
+
+  &[disabled] {
+    color: color('font-disabled');
+  }
+}

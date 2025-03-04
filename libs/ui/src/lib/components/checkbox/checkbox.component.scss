@@ -1,0 +1,55 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
+.checkbox-mark {
+  padding: $grid-offset-step;
+  background: color('white');
+  border: 1px solid color('grey-line');
+  border-radius: 2px;
+  font-size: 1rem;
+
+  &__icon {
+    stroke: color('font-default');
+    opacity: 0;
+    transition: opacity $animation-step * 0.5 ease;
+  }
+}
+
+.title {
+  font-family: $font-name-default;
+  color: color('font-default');
+}
+
+:host {
+  &.title-left {
+    flex-direction: row-reverse;
+  }
+
+  &.active {
+    .checkbox-mark {
+      background: color('yellow');
+      border: 1px solid color('yellow-line');
+    }
+
+    .checkbox-mark__icon {
+      opacity: 1;
+      transition: opacity $animation-step ease;
+    }
+  }
+
+  &.disabled {
+    &.active {
+      .checkbox-mark {
+        background: color('yellow-disabled');
+      }
+    }
+
+    .checkbox-mark__icon {
+      stroke: color('font-disabled');
+    }
+
+    .title {
+      color: rgba(color('font-default'), 0.75);
+    }
+  }
+}

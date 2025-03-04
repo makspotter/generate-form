@@ -7,12 +7,22 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true,
+          "changeDetection": "OnPush",
+          "standalone": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true,
+          "standalone": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "iq",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -29,11 +39,22 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "input": "src",
+                "glob": "data.json",
+                "output": "."
               }
             ],
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/ui/src/assets/styles",
+                "node_modules"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -74,26 +95,81 @@
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": true,
+          "skipTests": true,
+          "changeDetection": "OnPush"
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        "@schematics/angular:directive": {
+          "skipTests": true,
+          "standalone": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "iq",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+            "project": "libs/ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "libs/ui/.storybook",
+            "browserTarget": "ui:build",
+            "compodoc": false,
+            "port": 6006,
+            "experimentalZoneless": true,
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/ui/src/assets/styles",
+                "node_modules"
+              ]
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "libs/ui/.storybook",
+            "browserTarget": "ui:build",
+            "compodoc": false,
+            "outputDir": "dist/storybook/ui",
+            "experimentalZoneless": true,
+            "styles": [
+              "src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/ui/src/assets/styles",
+                "node_modules"
+              ]
+            }
           }
         }
       }
